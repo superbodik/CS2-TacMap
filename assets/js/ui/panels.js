@@ -302,6 +302,12 @@ export function createPanels({ store, bus, stage, share, exporter, api, timeline
         label.textContent = 'не подключено';
         return;
       }
+      if (window.location.protocol === 'https:' && api.base().startsWith('http://')) {
+        status.className = 'api-status err';
+        label.textContent = 'заблокировано: нужен https у API';
+        if (!silent) toast('Сайт открыт по https, а API по http — браузер блокирует запросы. Нужен https-адрес API.', 'err', 6000);
+        return;
+      }
       try {
         const data = await api.health();
         status.className = 'api-status ok';
