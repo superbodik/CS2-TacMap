@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности · mineDres-Team</title>
+<meta name="description" content="Какие данные собирают сервисы mineDres-Team: CS2 TacMap, API и Discord-бот, зачем и как их удалить.">
+<meta name="theme-color" content="#0f1013">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/legal.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181c'/%3E%3Cpath d='M6 24V8l10 8 10-8v16' fill='none' stroke='%235b8def' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 32 32"><rect x="1" y="1" width="30" height="30" rx="8" fill="#1b1e23" stroke="#2b303a" stroke-width="1.2"></rect><path d="M7 24V9l9 7 9-7v15"></path></svg>
+    <span>mineDres-Team <i>· Legal</i></span>
+  </div>
+  <nav>
+    <a href="terms.html">Условия</a>
+    <a href="privacy.html" class="active">Конфиденциальность</a>
+    <div class="langs" id="langs">
+      <button data-set="ru" class="active">RU</button>
+      <button data-set="uk">UA</button>
+      <button data-set="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<div data-lang="ru" class="shown">
+  <div class="doc-head">
+    <h1>Политика конфиденциальности</h1>
+    <p>Что собирают CS2 TacMap, API и Discord-бот mineDres-Team, зачем это нужно и как удалить свои данные.</p>
+    <span class="updated">Редакция от 14 сентября 2026 года</span>
+  </div>
+
+  <div class="summary">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Мы не собираем email, пароли и платёжные данные.</li>
+      <li>При входе через Discord сохраняются только ID, имя и ссылка на аватар.</li>
+      <li>Страты хранятся, только если вы нажали «Сохранить» или «Short».</li>
+      <li>Рекламы и трекеров нет, данные не продаются и не передаются третьим лицам.</li>
+      <li>Удалить всё можно самостоятельно или одним запросом в Discord.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2><b>1.</b> Кто обрабатывает данные</h2>
+    <p>Оператором данных выступает команда <strong>mineDres-Team</strong> — сообщество разработчиков и игроков, поддерживающее сервисы CS2 TacMap, API и Discord-бота. Связаться можно через <a href="https://discord.gg/ZMG7Z8pTs5" target="_blank" rel="noopener">Discord-сервер команды</a>.</p>
+  </section>
+
+  <section>
+    <h2><b>2.</b> Какие данные обрабатываются</h2>
+    <table class="table">
+      <tr><th>Категория</th><th>Что именно</th><th>Когда появляется</th></tr>
+      <tr><td>Профиль Discord</td><td>ID, отображаемое имя, ссылка на аватар, язык интерфейса</td><td>При входе через Discord или выборе языка в боте</td></tr>
+      <tr><td>Страты</td><td>Название, карта, координаты иконок, линии, раскидки, замеры, ревизии</td><td>При сохранении страты в аккаунт или создании короткой ссылки</td></tr>
+      <tr><td>Технические</td><td>IP-адрес в журналах веб-сервера, счётчики частоты запросов, отметки времени</td><td>При каждом обращении к API</td></tr>
+      <tr><td>Локальные</td><td>Токен сессии, адрес API, история последних 25 состояний доски</td><td>Хранится только в браузере, в localStorage</td></tr>
+      <tr><td>Демки</td><td>Загруженный файл <code>.dem</code> или ссылка на матч, метаданные задачи</td><td>Только если вы воспользовались панелью Demo Analyzer</td></tr>
+    </table>
+    <p>Мы <strong>не</strong> запрашиваем и не храним: email, пароли, номер телефона, платёжные данные, содержимое личных сообщений Discord.</p>
+  </section>
+
+  <section>
+    <h2><b>3.</b> Зачем это нужно</h2>
+    <ul>
+      <li><strong>Профиль Discord</strong> — идентификация владельца страт, отображение имени и аватара в интерфейсе, выдача языковой роли на сервере.</li>
+      <li><strong>Страты</strong> — сохранение вашей библиотеки, история ревизий и работа коротких ссылок.</li>
+      <li><strong>Технические данные</strong> — защита от перегрузки и злоупотреблений, диагностика ошибок.</li>
+      <li><strong>Локальные данные</strong> — чтобы не входить заново и не терять доску при случайном закрытии вкладки.</li>
+    </ul>
+    <p>Правовые основания по GDPR: исполнение договора (предоставление сервиса) и законный интерес (безопасность инфраструктуры). Согласие на обработку профиля вы даёте, нажимая «Войти через Discord».</p>
+  </section>
+
+  <section>
+    <h2><b>4.</b> Сроки хранения</h2>
+    <ul>
+      <li>Профиль и страты — пока существует аккаунт: до вашего запроса на удаление.</li>
+      <li>Журналы веб-сервера с IP — до 30 дней.</li>
+      <li>Счётчики частоты запросов — в оперативной памяти, до перезапуска сервиса.</li>
+      <li>Загруженные демки — до 30 дней, затем удаляются вместе с задачей.</li>
+      <li>Данные в браузере — пока вы не очистите данные сайта или не нажмёте «Выйти».</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>5.</b> Кому передаются данные</h2>
+    <p>Мы не продаём и не передаём данные третьим лицам для рекламы. Обработка происходит на инфраструктуре, необходимой для работы сервиса:</p>
+    <ul>
+      <li><strong>Discord</strong> — авторизация и работа бота (<a href="https://discord.com/privacy" target="_blank" rel="noopener">политика конфиденциальности</a>, <a href="https://discord.com/terms" target="_blank" rel="noopener">условия</a>);</li>
+      <li><strong>GitHub Pages</strong> — хостинг статического сайта;</li>
+      <li><strong>Cloudflare</strong> — DNS и проксирование запросов к API;</li>
+      <li><strong>Google Fonts</strong> — загрузка шрифтов при открытии страницы;</li>
+      <li><strong>собственный сервер команды</strong> — хранение страт и журналов.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>6.</b> Cookies и хранилище браузера</h2>
+    <p>Сервис не использует cookies и не подключает аналитику или рекламные трекеры. Вместо cookies применяется <code>localStorage</code>: токен сессии, выбранный адрес API и локальная история доски. Эти данные не покидают ваш браузер, пока вы сами не сохраните страту на сервер.</p>
+  </section>
+
+  <section>
+    <h2><b>7.</b> Ваши права</h2>
+    <ul>
+      <li><strong>Доступ</strong> — посмотреть свои страты можно в панели «История страт» → «Аккаунт».</li>
+      <li><strong>Удаление</strong> — кнопка «×» удаляет страту безвозвратно; «Выйти» отзывает токены; полное удаление профиля — по запросу в Discord, выполняется в течение 30 дней.</li>
+      <li><strong>Исправление</strong> — имя и аватар подтягиваются из Discord и обновляются при следующем входе.</li>
+      <li><strong>Переносимость</strong> — любая страта выгружается ссылкой <code>?strat=</code> или PNG-экспортом без участия сервера.</li>
+      <li><strong>Возражение и жалоба</strong> — напишите администрации; вы также вправе обратиться в надзорный орган по защите данных вашей страны.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>8.</b> Возраст пользователей</h2>
+    <p>Сервисы предназначены для пользователей, достигших возраста, допустимого правилами Discord (обычно 13 лет, в отдельных странах — больше). Мы сознательно не собираем данные детей младше этого возраста; если такие данные обнаружены, они удаляются по запросу.</p>
+  </section>
+
+  <section>
+    <h2><b>9.</b> Безопасность</h2>
+    <p>Доступ к API защищён подписанными токенами с ограниченным сроком жизни, ограничением частоты запросов и проверкой разрешённых доменов. Трафик между вами и сервисом шифруется по HTTPS. Абсолютной защиты не существует, поэтому не публикуйте в стратах и подписях чувствительную информацию.</p>
+  </section>
+
+  <section>
+    <h2><b>10.</b> Изменения политики</h2>
+    <p>Актуальная редакция всегда доступна по адресу <a href="https://minedres-team.github.io/legal/privacy.html">minedres-team.github.io/legal/privacy.html</a>. О существенных изменениях мы сообщаем в Discord-сообществе.</p>
+    <div class="note">Документ составлен на русском, украинском и английском языках. При расхождениях приоритет имеет русская версия.</div>
+  </section>
+</div>
+
+<div data-lang="uk">
+  <div class="doc-head">
+    <h1>Політика конфіденційності</h1>
+    <p>Що збирають CS2 TacMap, API та Discord-бот mineDres-Team, навіщо це потрібно і як видалити свої дані.</p>
+    <span class="updated">Редакція від 14 вересня 2026 року</span>
+  </div>
+
+  <div class="summary">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Ми не збираємо email, паролі та платіжні дані.</li>
+      <li>Під час входу через Discord зберігаються лише ID, ім'я та посилання на аватар.</li>
+      <li>Страти зберігаються, тільки якщо ви натиснули «Зберегти» або «Short».</li>
+      <li>Реклами та трекерів немає, дані не продаються і не передаються третім особам.</li>
+      <li>Видалити все можна самостійно або одним запитом у Discord.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2><b>1.</b> Хто обробляє дані</h2>
+    <p>Оператором даних є команда <strong>mineDres-Team</strong> — спільнота розробників і гравців, що підтримує сервіси CS2 TacMap, API та Discord-бота. Зв'язатися можна через <a href="https://discord.gg/ZMG7Z8pTs5" target="_blank" rel="noopener">Discord-сервер команди</a>.</p>
+  </section>
+
+  <section>
+    <h2><b>2.</b> Які дані обробляються</h2>
+    <table class="table">
+      <tr><th>Категорія</th><th>Що саме</th><th>Коли з'являється</th></tr>
+      <tr><td>Профіль Discord</td><td>ID, відображуване ім'я, посилання на аватар, мова інтерфейсу</td><td>Під час входу через Discord або вибору мови в боті</td></tr>
+      <tr><td>Страти</td><td>Назва, карта, координати іконок, лінії, розкидки, заміри, ревізії</td><td>Під час збереження страти в акаунт або створення короткого посилання</td></tr>
+      <tr><td>Технічні</td><td>IP-адреса в журналах вебсервера, лічильники частоти запитів, позначки часу</td><td>Під час кожного звернення до API</td></tr>
+      <tr><td>Локальні</td><td>Токен сесії, адреса API, історія останніх 25 станів дошки</td><td>Зберігається лише у браузері, у localStorage</td></tr>
+      <tr><td>Демки</td><td>Завантажений файл <code>.dem</code> або посилання на матч, метадані задачі</td><td>Тільки якщо ви скористалися панеллю Demo Analyzer</td></tr>
+    </table>
+    <p>Ми <strong>не</strong> запитуємо і не зберігаємо: email, паролі, номер телефону, платіжні дані, вміст приватних повідомлень Discord.</p>
+  </section>
+
+  <section>
+    <h2><b>3.</b> Навіщо це потрібно</h2>
+    <ul>
+      <li><strong>Профіль Discord</strong> — ідентифікація власника страт, показ імені та аватара, видача мовної ролі на сервері.</li>
+      <li><strong>Страти</strong> — збереження вашої бібліотеки, історія ревізій і робота коротких посилань.</li>
+      <li><strong>Технічні дані</strong> — захист від перевантаження і зловживань, діагностика помилок.</li>
+      <li><strong>Локальні дані</strong> — щоб не входити заново і не втрачати дошку при випадковому закритті вкладки.</li>
+    </ul>
+    <p>Правові підстави за GDPR: виконання договору (надання сервісу) і законний інтерес (безпека інфраструктури). Згоду на обробку профілю ви надаєте, натискаючи «Увійти через Discord».</p>
+  </section>
+
+  <section>
+    <h2><b>4.</b> Строки зберігання</h2>
+    <ul>
+      <li>Профіль і страти — поки існує акаунт: до вашого запиту на видалення.</li>
+      <li>Журнали вебсервера з IP — до 30 днів.</li>
+      <li>Лічильники частоти запитів — в оперативній пам'яті, до перезапуску сервісу.</li>
+      <li>Завантажені демки — до 30 днів, потім видаляються разом із задачею.</li>
+      <li>Дані у браузері — доки ви не очистите дані сайту або не натиснете «Вийти».</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>5.</b> Кому передаються дані</h2>
+    <p>Ми не продаємо і не передаємо дані третім особам для реклами. Обробка відбувається на інфраструктурі, потрібній для роботи сервісу:</p>
+    <ul>
+      <li><strong>Discord</strong> — авторизація і робота бота (<a href="https://discord.com/privacy" target="_blank" rel="noopener">політика конфіденційності</a>, <a href="https://discord.com/terms" target="_blank" rel="noopener">умови</a>);</li>
+      <li><strong>GitHub Pages</strong> — хостинг статичного сайту;</li>
+      <li><strong>Cloudflare</strong> — DNS і проксіювання запитів до API;</li>
+      <li><strong>Google Fonts</strong> — завантаження шрифтів при відкритті сторінки;</li>
+      <li><strong>власний сервер команди</strong> — зберігання страт і журналів.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>6.</b> Cookies і сховище браузера</h2>
+    <p>Сервіс не використовує cookies і не підключає аналітику чи рекламні трекери. Замість cookies застосовується <code>localStorage</code>: токен сесії, обрана адреса API та локальна історія дошки. Ці дані не залишають ваш браузер, доки ви самі не збережете страту на сервер.</p>
+  </section>
+
+  <section>
+    <h2><b>7.</b> Ваші права</h2>
+    <ul>
+      <li><strong>Доступ</strong> — переглянути свої страти можна в панелі «Історія страт» → «Аккаунт».</li>
+      <li><strong>Видалення</strong> — кнопка «×» видаляє страту безповоротно; «Вийти» відкликає токени; повне видалення профілю — за запитом у Discord, виконується протягом 30 днів.</li>
+      <li><strong>Виправлення</strong> — ім'я та аватар підтягуються з Discord і оновлюються під час наступного входу.</li>
+      <li><strong>Перенесення</strong> — будь-яка страта вивантажується посиланням <code>?strat=</code> або PNG-експортом без участі сервера.</li>
+      <li><strong>Заперечення і скарга</strong> — напишіть адміністрації; ви також маєте право звернутися до наглядового органу із захисту даних вашої країни.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>8.</b> Вік користувачів</h2>
+    <p>Сервіси призначені для користувачів, які досягли віку, дозволеного правилами Discord (зазвичай 13 років, в окремих країнах — більше). Ми свідомо не збираємо дані дітей молодшого віку; якщо такі дані виявлено, їх видаляють за запитом.</p>
+  </section>
+
+  <section>
+    <h2><b>9.</b> Безпека</h2>
+    <p>Доступ до API захищено підписаними токенами з обмеженим строком життя, обмеженням частоти запитів і перевіркою дозволених доменів. Трафік між вами і сервісом шифрується через HTTPS. Абсолютного захисту не існує, тому не публікуйте у стратах і підписах чутливу інформацію.</p>
+  </section>
+
+  <section>
+    <h2><b>10.</b> Зміни політики</h2>
+    <p>Актуальна редакція завжди доступна за адресою <a href="https://minedres-team.github.io/legal/privacy.html">minedres-team.github.io/legal/privacy.html</a>. Про суттєві зміни ми повідомляємо в Discord-спільноті.</p>
+    <div class="note">Документ складено російською, українською та англійською мовами. У разі розбіжностей пріоритет має російська версія.</div>
+  </section>
+</div>
+
+<div data-lang="en">
+  <div class="doc-head">
+    <h1>Privacy Policy</h1>
+    <p>What CS2 TacMap, the API and the mineDres-Team Discord bot collect, why, and how to delete it.</p>
+    <span class="updated">Revision of 14 September 2026</span>
+  </div>
+
+  <div class="summary">
+    <h2>In short</h2>
+    <ul>
+      <li>We collect no email addresses, passwords or payment details.</li>
+      <li>Signing in with Discord stores only your id, name and avatar URL.</li>
+      <li>Strats are stored only when you press "Save" or "Short".</li>
+      <li>No ads, no trackers; data is never sold or shared for marketing.</li>
+      <li>You can delete everything yourself or with one request in Discord.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2><b>1.</b> Who processes the data</h2>
+    <p>The data controller is <strong>mineDres-Team</strong>, a community of developers and players running CS2 TacMap, the API and the Discord bot. Contact us through the <a href="https://discord.gg/ZMG7Z8pTs5" target="_blank" rel="noopener">team Discord server</a>.</p>
+  </section>
+
+  <section>
+    <h2><b>2.</b> What data is processed</h2>
+    <table class="table">
+      <tr><th>Category</th><th>Details</th><th>When it appears</th></tr>
+      <tr><td>Discord profile</td><td>Id, display name, avatar URL, interface language</td><td>On Discord sign-in or language selection in the bot</td></tr>
+      <tr><td>Strats</td><td>Name, map, icon coordinates, lines, nade lineups, measurements, revisions</td><td>When saving a strat to your account or creating a short link</td></tr>
+      <tr><td>Technical</td><td>IP address in web server logs, rate-limit counters, timestamps</td><td>On every API request</td></tr>
+      <tr><td>Local</td><td>Session token, API address, the last 25 board states</td><td>Stored in your browser only, in localStorage</td></tr>
+      <tr><td>Demos</td><td>Uploaded <code>.dem</code> file or match link, job metadata</td><td>Only if you used the Demo Analyzer panel</td></tr>
+    </table>
+    <p>We do <strong>not</strong> request or store email addresses, passwords, phone numbers, payment details or the contents of your Discord messages.</p>
+  </section>
+
+  <section>
+    <h2><b>3.</b> Why we need it</h2>
+    <ul>
+      <li><strong>Discord profile</strong> — identifying strat owners, showing your name and avatar, granting the language role.</li>
+      <li><strong>Strats</strong> — keeping your library, revision history and short links working.</li>
+      <li><strong>Technical data</strong> — protecting the service from overload and abuse, diagnosing errors.</li>
+      <li><strong>Local data</strong> — so you stay signed in and do not lose the board if a tab closes.</li>
+    </ul>
+    <p>GDPR legal bases: performance of a contract (providing the service) and legitimate interest (infrastructure security). You consent to profile processing by pressing "Sign in with Discord".</p>
+  </section>
+
+  <section>
+    <h2><b>4.</b> Retention</h2>
+    <ul>
+      <li>Profile and strats — while the account exists, until you request deletion.</li>
+      <li>Web server logs with IP addresses — up to 30 days.</li>
+      <li>Rate-limit counters — in memory, until the service restarts.</li>
+      <li>Uploaded demos — up to 30 days, then removed together with the job.</li>
+      <li>Browser data — until you clear site data or press "Log out".</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>5.</b> Who we share data with</h2>
+    <p>We never sell or share data for advertising. Processing happens on the infrastructure required to run the service:</p>
+    <ul>
+      <li><strong>Discord</strong> — authentication and the bot (<a href="https://discord.com/privacy" target="_blank" rel="noopener">privacy policy</a>, <a href="https://discord.com/terms" target="_blank" rel="noopener">terms</a>);</li>
+      <li><strong>GitHub Pages</strong> — static site hosting;</li>
+      <li><strong>Cloudflare</strong> — DNS and proxying API requests;</li>
+      <li><strong>Google Fonts</strong> — font delivery when the page loads;</li>
+      <li><strong>the team's own server</strong> — storing strats and logs.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>6.</b> Cookies and browser storage</h2>
+    <p>The service sets no cookies and loads no analytics or advertising trackers. Instead it uses <code>localStorage</code> for the session token, the chosen API address and the local board history. That data never leaves your browser until you save a strat to the server yourself.</p>
+  </section>
+
+  <section>
+    <h2><b>7.</b> Your rights</h2>
+    <ul>
+      <li><strong>Access</strong> — view your strats in the "Strat history" panel → "Account".</li>
+      <li><strong>Deletion</strong> — the "×" button deletes a strat permanently; "Log out" revokes tokens; full profile deletion on request in Discord within 30 days.</li>
+      <li><strong>Rectification</strong> — name and avatar come from Discord and refresh on your next sign-in.</li>
+      <li><strong>Portability</strong> — any strat exports as a <code>?strat=</code> link or a PNG without involving the server.</li>
+      <li><strong>Objection and complaints</strong> — contact the administration; you may also complain to the data protection authority in your country.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><b>8.</b> Age of users</h2>
+    <p>The services are intended for users who meet the minimum age required by Discord (usually 13, higher in some countries). We do not knowingly collect data from younger children; if such data is found it is deleted on request.</p>
+  </section>
+
+  <section>
+    <h2><b>9.</b> Security</h2>
+    <p>API access is protected by signed, time-limited tokens, rate limiting and an allow-list of origins. Traffic between you and the service is encrypted with HTTPS. No protection is absolute, so avoid putting sensitive information into strat names and labels.</p>
+  </section>
+
+  <section>
+    <h2><b>10.</b> Changes to this policy</h2>
+    <p>The current revision is always available at <a href="https://minedres-team.github.io/legal/privacy.html">minedres-team.github.io/legal/privacy.html</a>. Material changes are announced in the Discord community.</p>
+    <div class="note">This document exists in Russian, Ukrainian and English. In case of discrepancies the Russian version prevails.</div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <a href="terms.html">Условия</a> · <a href="privacy.html">Конфиденциальность</a> ·
+  <a href="https://discord.gg/ZMG7Z8pTs5" target="_blank" rel="noopener">Discord</a> ·
+  <a href="https://superbodik.github.io/CS2-TacMap/" target="_blank" rel="noopener">CS2 TacMap</a>
+  <br>© mineDres-Team
+</footer>
+
+<script>
+(function () {
+  var stored = null;
+  try { stored = localStorage.getItem('minedres.legal.lang'); } catch (error) { stored = null; }
+  var initial = stored || (navigator.language || 'ru').slice(0, 2).toLowerCase();
+  if (['ru', 'uk', 'en'].indexOf(initial) < 0) initial = 'ru';
+
+  function apply(lang) {
+    var blocks = document.querySelectorAll('[data-lang]');
+    for (var i = 0; i < blocks.length; i += 1) {
+      blocks[i].classList.toggle('shown', blocks[i].getAttribute('data-lang') === lang);
+    }
+    var buttons = document.querySelectorAll('#langs button');
+    for (var j = 0; j < buttons.length; j += 1) {
+      buttons[j].classList.toggle('active', buttons[j].getAttribute('data-set') === lang);
+    }
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('minedres.legal.lang', lang); } catch (error) {}
+  }
+
+  document.getElementById('langs').addEventListener('click', function (event) {
+    var button = event.target.closest('button');
+    if (button) apply(button.getAttribute('data-set'));
+  });
+
+  apply(initial);
+})();
+</script>
+
+</body>
+</html>

@@ -13,3 +13,10 @@ venv/
 Simple Radar/
 .DS_Store
 Thumbs.db
+ключи
+ключи/
+*ключи*
+id_*
+*.key
+*.ppk
+secrets/
