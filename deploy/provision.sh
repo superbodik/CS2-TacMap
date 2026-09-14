@@ -80,6 +80,7 @@ Wants=network-online.target
 Type=simple
 User=$SERVICE_USER
 WorkingDirectory=$APP_DIR/bot
+Environment=PYTHONUNBUFFERED=1
 ExecStart=$APP_DIR/bot/.venv/bin/python bot.py
 Restart=always
 RestartSec=5
