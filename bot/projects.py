@@ -10,6 +10,14 @@ DEFAULT_PROJECTS = [
         "url": "https://superbodik.github.io/CS2-TacMap/"
     },
     {
+        "key": "cs2-boost",
+        "name": "CS2-Boost",
+        "emoji": "⚡",
+        "colour": 0xE0A35C,
+        "description": "Оптимизация Windows под CS2 · FPS and latency",
+        "url": "https://github.com/superbodik/CS2-Boost"
+    },
+    {
         "key": "crc-code",
         "name": "CRC Code",
         "emoji": "🧩",
