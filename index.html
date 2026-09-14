@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CS2 TacMap</title>
+<meta name="description" content="by mineDres-Team — продвинутая интерактивная тактическая карта Counter-Strike: рисование маршрутов, иконки, траектории раскидок, тайминги, таймлайн раунда и шаринг страт по ссылке.">
+<meta name="theme-color" content="#0f1013">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181c'/%3E%3Cpath d='M6 24V8l10 8 10-8v16' fill='none' stroke='%235b8def' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8"></rect><path d="M7 24V9l9 7 9-7v15"></path></svg>
+      <div class="brand-text">
+        <span class="brand-name">CS2 <i>TacMap</i></span>
+        <span class="brand-sub">by mineDres-Team</span>
+      </div>
+    </div>
+
+    <div class="topbar-group">
+      <label class="field">
+        <span class="field-label">Карта</span>
+        <select id="mapSelect" class="select"></select>
+      </label>
+      <div class="floors" id="floorSwitch" hidden></div>
+      <button class="btn ghost sm" id="btnRadar" title="Радар Simple Radar / схема">Радар</button>
+    </div>
+
+    <div class="topbar-group grow">
+      <label class="field wide">
+        <span class="field-label">Название страты</span>
+        <input id="stratName" class="input" type="text" placeholder="A-split default" maxlength="64">
+      </label>
+    </div>
+
+    <div class="topbar-group" id="accountSlot"></div>
+
+    <div class="topbar-group">
+      <div class="btn-group">
+        <button class="btn icon" id="btnUndo" title="Отменить (Ctrl+Z)" aria-label="Отменить">
+          <svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"></path><path d="M4 9h9a6 6 0 1 1 0 12H8"></path></svg>
+        </button>
+        <button class="btn icon" id="btnRedo" title="Повторить (Ctrl+Shift+Z)" aria-label="Повторить">
+          <svg viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"></path><path d="M20 9h-9a6 6 0 1 0 0 12h5"></path></svg>
+        </button>
+      </div>
+      <div class="btn-group">
+        <button class="btn" id="btnShare">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg>
+          <span>Share URL</span>
+        </button>
+        <button class="btn" id="btnShort" title="Короткая ссылка через API">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M4 12h10"></path><path d="M4 17h7"></path></svg>
+          <span>Short</span>
+        </button>
+        <button class="btn" id="btnExport" title="Экспорт PNG">
+          <svg viewBox="0 0 24 24"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M4 21h16"></path></svg>
+          <span>PNG</span>
+        </button>
+      </div>
+      <button class="btn danger" id="btnReset" title="Сбросить всё">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M6 6l1 14h10l1-14"></path></svg>
+        <span>Reset</span>
+      </button>
+    </div>
+  </header>
+
+  <aside class="panel panel-left">
+    <section class="block">
+      <h2 class="block-title">Инструменты</h2>
+      <div class="tools" id="toolbar">
+        <button class="tool" data-tool="select" title="Выделение и перетаскивание (V)">
+          <svg viewBox="0 0 24 24"><path d="m4 3 7 17 2.5-6.5L20 11z"></path></svg><span>Select</span><kbd>V</kbd>
+        </button>
+        <button class="tool" data-tool="pen" title="Кисть маршрута (P)">
+          <svg viewBox="0 0 24 24"><path d="M3 21s3-1 5-3l9-9-2-2-9 9c-2 2-3 5-3 5z"></path><path d="m16 5 3 3"></path></svg><span>Draw</span><kbd>P</kbd>
+        </button>
+        <button class="tool" data-tool="arrow" title="Стрелка (A)">
+          <svg viewBox="0 0 24 24"><path d="M4 20 20 4"></path><path d="M13 4h7v7"></path></svg><span>Arrow</span><kbd>A</kbd>
+        </button>
+        <button class="tool" data-tool="eraser" title="Ластик (E)">
+          <svg viewBox="0 0 24 24"><path d="m4 15 7-7 8 8-4 4H8z"></path><path d="M6 21h14"></path></svg><span>Eraser</span><kbd>E</kbd>
+        </button>
+        <button class="tool" data-tool="nade" title="Траектория раскидки (N)">
+          <svg viewBox="0 0 24 24"><path d="M3 20C7 8 15 4 21 4"></path><circle cx="20" cy="5" r="2"></circle><circle cx="4" cy="19" r="2"></circle></svg><span>Nade</span><kbd>N</kbd>
+        </button>
+        <button class="tool" data-tool="ruler" title="Рулетка и тайминги (R)">
+          <svg viewBox="0 0 24 24"><path d="M3 14 14 3l7 7L10 21z"></path><path d="m7 10 2 2"></path><path d="m10 7 2 2"></path><path d="m13 10 2 2"></path></svg><span>Ruler</span><kbd>R</kbd>
+        </button>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Цвет и толщина</h2>
+      <div class="swatches" id="swatches"></div>
+      <label class="range-row">
+        <span>Толщина</span>
+        <input type="range" id="brushSize" min="2" max="16" step="1" value="5">
+        <output id="brushOut">5</output>
+      </label>
+      <div class="btn-row">
+        <button class="btn ghost sm" id="btnClearDraw">Очистить рисунки</button>
+        <button class="btn ghost sm" id="btnClearNades">Очистить нейды</button>
+      </div>
+    </section>
+
+    <section class="block grow">
+      <h2 class="block-title">Иконки <em>drag &amp; drop</em></h2>
+      <div class="palette" id="palette"></div>
+      <p class="hint">Перетащите иконку на карту или кликните по ней, а затем по нужной точке карты.</p>
+    </section>
+  </aside>
+
+  <main class="stage-wrap">
+    <div class="stage" id="stage">
+      <div class="stage-viewport" id="viewport">
+        <svg class="layer layer-map" id="mapLayer" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
+        <canvas class="layer layer-draw" id="drawLayer"></canvas>
+        <div class="layer layer-tokens" id="tokenLayer"></div>
+      </div>
+      <div class="stage-hud">
+        <div class="hud-pill" id="hudTool">Select</div>
+        <div class="hud-pill mono" id="hudCoords">0 · 0</div>
+        <div class="hud-pill mono" id="hudZoom">100%</div>
+      </div>
+      <div class="stage-actions">
+        <button class="btn icon ghost" id="btnZoomIn" title="Приблизить">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+        </button>
+        <button class="btn icon ghost" id="btnZoomOut" title="Отдалить">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14"></path></svg>
+        </button>
+        <button class="btn icon ghost" id="btnZoomReset" title="Сбросить вид (0)">
+          <svg viewBox="0 0 24 24"><path d="M4 9V4h5"></path><path d="M20 15v5h-5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path></svg>
+        </button>
+      </div>
+      <div class="stage-tip" id="stageTip"></div>
+    </div>
+  </main>
+
+  <aside class="panel panel-right">
+    <section class="block">
+      <h2 class="block-title">Траектории раскидок</h2>
+      <div class="chips" id="nadeTypes"></div>
+      <label class="range-row">
+        <span>Дуга</span>
+        <input type="range" id="nadeBend" min="-60" max="60" step="2" value="26">
+        <output id="nadeBendOut">26</output>
+      </label>
+      <label class="field block-field">
+        <span class="field-label">Подпись</span>
+        <input id="nadeLabel" class="input" type="text" placeholder="Jump throw from T-ramp" maxlength="48">
+      </label>
+      <p class="hint">Режим <b>Nade</b>: первый клик — позиция игрока, второй — точка прилёта.</p>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Рулетка / тайминги</h2>
+      <label class="field block-field">
+        <span class="field-label">Скорость перемещения</span>
+        <select id="speedSelect" class="select"></select>
+      </label>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-label">Дистанция</span><b class="stat-value mono" id="statDist">—</b></div>
+        <div class="stat"><span class="stat-label">Время</span><b class="stat-value mono" id="statTime">—</b></div>
+      </div>
+      <button class="btn ghost sm full" id="btnClearRulers">Очистить замеры</button>
+    </section>
+
+    <section class="block grow">
+      <h2 class="block-title">Объекты на карте</h2>
+      <div class="object-list" id="objectList"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">История страт</h2>
+      <div class="seg" id="librarySeg">
+        <button data-src="local" class="active">Локально</button>
+        <button data-src="cloud">Аккаунт</button>
+      </div>
+      <div class="object-list library" id="libraryList"></div>
+      <button class="btn accent full" id="btnSaveStrat">Сохранить страту</button>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Demo Analyzer <span class="tag">beta</span></h2>
+      <div class="demo-drop" id="demoDrop">
+        <svg viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M4 20h16"></path></svg>
+        <span>Перетащите .dem сюда</span>
+      </div>
+      <input type="file" id="demoFile" accept=".dem" hidden>
+      <button class="btn full" id="btnDemoFile">Загрузить .dem файл</button>
+      <label class="field block-field">
+        <span class="field-label">Ссылка на матч</span>
+        <input id="demoUrl" class="input" type="url" placeholder="https://www.faceit.com/... или steam://...">
+      </label>
+      <button class="btn accent full" id="btnDemoUrl">Анализировать матч</button>
+      <p class="hint">Парсинг демок выполняется на сервере <code>mineDres API</code>.</p>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Backend API</h2>
+      <label class="field block-field">
+        <span class="field-label">API base URL</span>
+        <input id="apiBase" class="input mono" type="url" placeholder="http://localhost:8787">
+      </label>
+      <div class="api-status" id="apiStatus"><i class="dot"></i><span>не подключено</span></div>
+      <button class="btn ghost sm full" id="btnApiCheck">Проверить соединение</button>
+    </section>
+  </aside>
+
+  <footer class="timeline-bar">
+    <div class="timeline-controls">
+      <button class="btn icon accent" id="btnPlay" title="Пуск / пауза (Space)">
+        <svg viewBox="0 0 24 24" id="playIcon"><path d="M7 4l12 8-12 8z"></path></svg>
+      </button>
+      <button class="btn icon ghost" id="btnStop" title="Стоп">
+        <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg>
+      </button>
+      <div class="time-display"><b class="mono" id="timeNow">0:00</b><span>/</span><span class="mono" id="timeTotal">1:55</span></div>
+    </div>
+    <div class="timeline-track">
+      <div class="timeline-marks" id="timelineMarks"></div>
+      <input type="range" id="timeline" min="0" max="115" step="0.1" value="0">
+    </div>
+    <div class="timeline-controls">
+      <label class="switch" title="Записывать позиции иконок как ключевые кадры">
+        <input type="checkbox" id="recordKeys">
+        <span class="switch-ui"></span>
+        <span class="switch-label">REC keys</span>
+      </label>
+      <button class="btn ghost sm" id="btnKeyAdd" title="Ключевой кадр для выбранной иконки">+ Key</button>
+      <button class="btn ghost sm" id="btnKeyClear">Сброс</button>
+    </div>
+    <div class="footer-brand">Powered by <a class="brand-link" href="https://discord.gg/ZMG7Z8pTs5" target="_blank" rel="noopener"><b>mineDres-Team</b></a></div>
+  </footer>
+
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

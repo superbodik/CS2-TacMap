@@ -1,0 +1,21 @@
+﻿{
+  "name": "cs2-tacmap-api",
+  "version": "1.0.0",
+  "description": "CS2 TacMap API by mineDres-Team: Discord auth, strat storage, demo analyzer stubs",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "multer": "^2.0.2"
+  },
+  "license": "MIT"
+}
+
