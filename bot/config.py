@@ -32,6 +32,8 @@ class Config:
     role_uk = _int("ROLE_UK")
     role_en = _int("ROLE_EN")
 
+    members_intent = _str("MEMBERS_INTENT", "false").lower() in ("1", "true", "yes", "on")
+
     api_base = _str("API_BASE", "http://127.0.0.1:8787").rstrip("/")
     site_url = _str("SITE_URL", "https://minedres.github.io/CS2-TacMap/").rstrip("/")
     invite_url = _str("INVITE_URL", "https://discord.gg/ZMG7Z8pTs5")

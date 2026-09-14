@@ -10,7 +10,7 @@ from config import config
 from ui.language import LanguageView
 
 intents = disnake.Intents.default()
-intents.members = True
+intents.members = config.members_intent
 
 command_sync_flags = commands.CommandSyncFlags.default()
 
