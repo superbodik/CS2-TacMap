@@ -1,6 +1,6 @@
 export const APP_NAME = 'CS2 TacMap';
 
-export const API_BASE = 'http://202.181.188.159:8787';
+export const API_BASE = 'https://api.ukrflow.pp.ua';
 
 export const DISCORD_INVITE = 'https://discord.gg/ZMG7Z8pTs5';
 

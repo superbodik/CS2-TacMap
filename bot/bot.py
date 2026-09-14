@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from config import config
 from ui.language import LanguageView
+from ui.rules import RulesView
 
 intents = disnake.Intents.default()
 intents.members = config.members_intent
@@ -25,6 +26,7 @@ bot = commands.InteractionBot(
 @bot.event
 async def on_ready():
     bot.add_view(LanguageView())
+    bot.add_view(RulesView())
     print(f"[bot] вошёл как {bot.user} (id {bot.user.id})")
     print(f"[bot] серверов: {len(bot.guilds)} | API: {config.api_base}")
 
@@ -56,7 +58,7 @@ def main():
     if not config.token:
         raise SystemExit(1)
 
-    for extension in ("cogs.language", "cogs.tacmap", "cogs.announce"):
+    for extension in ("cogs.language", "cogs.tacmap", "cogs.announce", "cogs.rules"):
         bot.load_extension(extension)
 
     bot.run(config.token)

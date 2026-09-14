@@ -37,6 +37,8 @@ class Config:
     api_base = _str("API_BASE", "http://127.0.0.1:8787").rstrip("/")
     site_url = _str("SITE_URL", "https://minedres.github.io/CS2-TacMap/").rstrip("/")
     invite_url = _str("INVITE_URL", "https://discord.gg/ZMG7Z8pTs5")
+    terms_url = _str("TERMS_URL", "https://minedres-team.github.io/legal/terms.html")
+    privacy_url = _str("PRIVACY_URL", "https://minedres-team.github.io/legal/privacy.html")
 
     data_file = Path(_str("DATA_FILE", str(ROOT / "data" / "bot.json")))
     accent = 0x5B8DEF
