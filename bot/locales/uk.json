@@ -60,5 +60,14 @@
   "rules.footer": "Перебуваючи на сервері, ви погоджуєтеся з цими правилами · mineDres-Team",
   "rules.placeholder": "Показати правила іншою мовою",
   "rules.button.terms": "Умови використання",
-  "rules.button.privacy": "Конфіденційність"
+  "rules.button.privacy": "Конфіденційність",
+  "projects.title": "Проєкти mineDres-Team",
+  "projects.description": "Оберіть проєкти, про які хочете отримувати пінги. Зняті зі списку підписки прибираються автоматично.",
+  "projects.placeholder": "Оберіть проєкти для сповіщень",
+  "projects.footer": "Підписки можна змінювати будь-коли · mineDres-Team",
+  "projects.open": "Відкрити",
+  "projects.added": "Підписку оформлено: {roles}",
+  "projects.removed": "Підписку знято: {roles}",
+  "projects.missing": "Не вдалося видати ролі: {names}",
+  "projects.nochange": "Нічого не змінилося."
 }

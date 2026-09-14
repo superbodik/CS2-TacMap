@@ -60,5 +60,14 @@
   "rules.footer": "By staying on the server you accept these rules · mineDres-Team",
   "rules.placeholder": "Show the rules in another language",
   "rules.button.terms": "Terms of Service",
-  "rules.button.privacy": "Privacy Policy"
+  "rules.button.privacy": "Privacy Policy",
+  "projects.title": "mineDres-Team projects",
+  "projects.description": "Pick the projects you want to be pinged about. Anything you deselect is unsubscribed automatically.",
+  "projects.placeholder": "Choose projects to follow",
+  "projects.footer": "Change your subscriptions any time · mineDres-Team",
+  "projects.open": "Open",
+  "projects.added": "Subscribed: {roles}",
+  "projects.removed": "Unsubscribed: {roles}",
+  "projects.missing": "Could not grant roles: {names}",
+  "projects.nochange": "Nothing changed."
 }

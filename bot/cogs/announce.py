@@ -92,6 +92,8 @@ class Announce(commands.Cog):
                 "`/status` — статус API",
                 "`/rules`, `/postrules` — правила сервера",
                 "`/legal` — документы команды",
+                "`/projects`, `/postprojects` — подписки на проекты",
+                "`/projectadd`, `/projectremove`, `/projectlist` — управление проектами",
                 "`/announce` — анонс с оформлением",
                 "`/say` — быстрое сообщение"
             ]),

@@ -6,6 +6,8 @@ from i18n import LANGUAGES, flag_of, name_of, t
 from storage import storage
 from ui.language import LanguageView, panel_embed
 from ui.rules import RulesView, rules_embed
+from ui.projects import ProjectsView, projects_embed
+from projects import list_for, role_name
 
 ROLE_STYLE = {
     "ru": {"name": "🇷🇺 Русский", "colour": 0x5B8DEF},
@@ -28,6 +30,7 @@ CHANNELS = {
 INFO_CATEGORY = "ℹ️ ИНФОРМАЦИЯ · INFO"
 RULES_CHANNEL = "правила-rules"
 LANGUAGE_CHANNEL = "выбор-языка-language"
+PROJECTS_CHANNEL = "выбор-проектов-projects"
 
 TOPIC = "Выберите язык · Оберіть мову · Choose your language"
 
@@ -153,6 +156,34 @@ class Setup(commands.Cog):
             log.append(f"✓ каналы {CATEGORY_NAMES[code]} на месте")
         return category
 
+    async def ensure_projects(self, guild, category, log):
+        everyone = guild.default_role
+        overwrites = {
+            everyone: disnake.PermissionOverwrite(view_channel=True, send_messages=False, add_reactions=False),
+            guild.me: disnake.PermissionOverwrite(view_channel=True, send_messages=True, manage_messages=True)
+        }
+        channel = self.find_channel(guild, PROJECTS_CHANNEL, category) or self.find_channel(guild, PROJECTS_CHANNEL)
+        if channel is None:
+            channel = await guild.create_text_channel(
+                PROJECTS_CHANNEL,
+                category=category,
+                topic="Подписки на проекты · Project pings",
+                overwrites=overwrites,
+                reason="CS2 TacMap project roles"
+            )
+            log.append(f"➕ канал #{channel.name}")
+        else:
+            await channel.edit(category=category, overwrites=overwrites)
+            log.append(f"✓ канал #{channel.name}")
+        return channel
+
+    async def ensure_project_roles(self, guild, log):
+        items = list_for(guild.id)
+        cog = self.bot.get_cog("Projects")
+        if cog is not None:
+            return await cog.ensure_roles(guild, items, log)
+        return items
+
     @commands.slash_command(name="setup", description="Развернуть языковую структуру сервера / Set up language server")
     @commands.has_permissions(administrator=True)
     async def setup_command(
@@ -160,7 +191,8 @@ class Setup(commands.Cog):
         interaction: disnake.ApplicationCommandInteraction,
         channels: bool = commands.Param(default=True, description="Создавать категории и каналы для каждого языка"),
         rules: bool = commands.Param(default=True, description="Создать канал с правилами"),
-        panel: bool = commands.Param(default=True, description="Опубликовать панель выбора языка")
+        panel: bool = commands.Param(default=True, description="Опубликовать панель выбора языка"),
+        project_roles: bool = commands.Param(default=True, description="Создать роли и панель подписок на проекты")
     ):
         if interaction.guild is None:
             await interaction.response.send_message("Команда работает только на сервере.", ephemeral=True)
@@ -182,12 +214,19 @@ class Setup(commands.Cog):
         try:
             roles = await self.ensure_roles(guild, log)
             language_channel, rules_channel = await self.ensure_info(guild, roles, log, rules)
+            category_for_info = language_channel.category
 
             if channels:
                 for code in LANGUAGES:
                     await self.ensure_language_space(guild, code, roles[code], log)
 
+            projects_channel = None
+            if project_roles:
+                projects_channel = await self.ensure_projects(guild, category_for_info, log)
+
             channel_ids = {"language": language_channel.id}
+            if projects_channel:
+                channel_ids["projects"] = projects_channel.id
             if rules_channel:
                 channel_ids["rules"] = rules_channel.id
             await storage.set_guild(guild.id, {"channels": channel_ids})
@@ -199,6 +238,11 @@ class Setup(commands.Cog):
             if rules and rules_channel:
                 await self.publish(rules_channel, rules_embed("ru"), RulesView(), "rules")
                 log.append(f"➕ правила в #{rules_channel.name}")
+
+            if project_roles and projects_channel:
+                items = await self.ensure_project_roles(guild, log)
+                await self.publish(projects_channel, projects_embed(items), ProjectsView(items), "projects")
+                log.append(f"➕ панель проектов в #{projects_channel.name}")
 
         except disnake.Forbidden as error:
             await interaction.edit_original_response(content=f"Недостаточно прав: {error}. Поднимите роль бота выше языковых ролей.")

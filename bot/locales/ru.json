@@ -60,5 +60,14 @@
   "rules.footer": "Находясь на сервере, вы соглашаетесь с этими правилами · mineDres-Team",
   "rules.placeholder": "Показать правила на другом языке",
   "rules.button.terms": "Условия использования",
-  "rules.button.privacy": "Конфиденциальность"
+  "rules.button.privacy": "Конфиденциальность",
+  "projects.title": "Проекты mineDres-Team",
+  "projects.description": "Выберите проекты, о которых хотите получать пинги. Снятые из списка подписки убираются автоматически.",
+  "projects.placeholder": "Выберите проекты для уведомлений",
+  "projects.footer": "Подписки можно менять в любой момент · mineDres-Team",
+  "projects.open": "Открыть",
+  "projects.added": "Подписка оформлена: {roles}",
+  "projects.removed": "Подписка снята: {roles}",
+  "projects.missing": "Не удалось выдать роли: {names}",
+  "projects.nochange": "Ничего не изменилось."
 }
