@@ -185,10 +185,13 @@ async def main():
         finally:
             done.set()
 
-    async with client:
-        asyncio.create_task(client.start(config.token))
-        await done.wait()
-        await client.close()
+    task = asyncio.create_task(client.start(config.token))
+    await done.wait()
+    await client.close()
+    try:
+        await asyncio.wait_for(task, timeout=10)
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
