@@ -9,7 +9,7 @@ class Storage:
     def __init__(self, path: Path):
         self.path = path
         self.lock = asyncio.Lock()
-        self.data = {"users": {}, "panels": {}, "stats": {}}
+        self.data = {"users": {}, "panels": {}, "stats": {}, "guilds": {}}
         self._load()
 
     def _load(self):
@@ -49,6 +49,21 @@ class Storage:
     async def set_panel_message(self, channel_id, message_id):
         self.data["panels"][str(channel_id)] = message_id
         await self.save()
+
+    def guild(self, guild_id):
+        return self.data["guilds"].get(str(guild_id), {})
+
+    def guild_roles(self, guild_id):
+        return self.guild(guild_id).get("roles", {})
+
+    def guild_channels(self, guild_id):
+        return self.guild(guild_id).get("channels", {})
+
+    async def set_guild(self, guild_id, patch):
+        entry = self.data["guilds"].setdefault(str(guild_id), {})
+        entry.update(patch)
+        await self.save()
+        return entry
 
     def counters(self):
         counts = {"ru": 0, "uk": 0, "en": 0}

@@ -58,7 +58,7 @@ def main():
     if not config.token:
         raise SystemExit(1)
 
-    for extension in ("cogs.language", "cogs.tacmap", "cogs.announce", "cogs.rules"):
+    for extension in ("cogs.language", "cogs.tacmap", "cogs.announce", "cogs.rules", "cogs.setup"):
         bot.load_extension(extension)
 
     bot.run(config.token)

@@ -83,6 +83,7 @@ class Announce(commands.Cog):
         embed = disnake.Embed(
             title="CS2 TacMap Bot",
             description="\n".join([
+                "`/setup` — развернуть языковую структуру сервера",
                 "`/panel` — панель выбора языка в канале",
                 "`/language` — сменить свой язык",
                 "`/tacmap` — ссылка на тактическую карту",

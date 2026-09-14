@@ -39,20 +39,31 @@ def options():
     ]
 
 
+def role_ids_for(guild):
+    stored = storage.guild_roles(guild.id)
+    mapping = {}
+    for code in LANGUAGES:
+        value = stored.get(code) or config.role_for(code)
+        if value:
+            mapping[code] = int(value)
+    return mapping
+
+
 async def apply_language(member, lang):
-    target = config.role_for(lang)
+    guild = member.guild
+    mapping = role_ids_for(guild)
+    target = mapping.get(lang)
     if not target:
         return None, "missing"
 
-    guild = member.guild
     role = guild.get_role(target)
     if role is None:
         return None, "missing"
 
     remove = [
         guild.get_role(role_id)
-        for role_id in config.language_roles()
-        if role_id != target and guild.get_role(role_id) in member.roles
+        for code, role_id in mapping.items()
+        if code != lang and guild.get_role(role_id) in member.roles
     ]
 
     try:
